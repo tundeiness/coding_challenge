@@ -3,39 +3,34 @@
 def contains_duplicate(nums)
   hash = { }
   for i in nums
-     if hash.include?(i)
-        true
+    if hash.include?(i)
+      true
       break
-     end
-      hash[i] = 1
+    end
+    hash[i] = 1
   end
   false
 end
 
 # Solution 2
 
-
-def contains_duplicate(nums)
-
+def contains_duplicate_2(nums)
   hash = { }
-
   for i in nums
-     hash[i] = 1
+    hash[i] = 1
   end
 
-  if hash.length == nums.length
-      return false
+  if !(hash.length == nums.length)
+    false
   else
-      return true
+    true
   end
 end
-
-
 
 # Solution 3
 
 
-def contains_duplicate(nums)
+def contains_duplicate_3(nums)
   dupli = nums.uniq
   if (dupli.length == nums.length)
     false
