@@ -5,9 +5,7 @@ def hamming_weight(n)
 
   count = 0
   conv.each do |i|
-    if i == '1'
-      count += 1
-    end
+    count += 1 if i == '1'
   end
   count
 end

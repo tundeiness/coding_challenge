@@ -1,8 +1,8 @@
 # @param {Integer[]} nums
 # @return {Boolean}
 def contains_duplicate(nums)
-  hash = { }
-  for i in nums
+  hash = {}
+  nums.each do |i|
     if hash.include?(i)
       true
       break
@@ -15,8 +15,8 @@ end
 # Solution 2
 
 def contains_duplicate_2(nums)
-  hash = { }
-  for i in nums
+  hash = {}
+  nums.each do |i|
     hash[i] = 1
   end
 
@@ -29,12 +29,7 @@ end
 
 # Solution 3
 
-
 def contains_duplicate_3(nums)
   dupli = nums.uniq
-  if (dupli.length == nums.length)
-    false
-  else
-    true
-  end
+  !(dupli.length == nums.length)
 end
