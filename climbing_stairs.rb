@@ -1,5 +1,4 @@
 def climb_stairs(n)
-
   ash = {}
   arr = []
   (1..n).step(1) { |v| arr << v }
@@ -13,10 +12,7 @@ def climb_stairs(n)
       som = ash[fir] + ash[sec]
       ash[x] = som
     end
-
    end
-
    ash[n]
 end
-
 puts climb_stairs(7)
