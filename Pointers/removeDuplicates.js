@@ -12,6 +12,6 @@ const duplicates = (arr) => {
    return n;
 }
 
-const arr = [0,0,1,1,1,2,2,3,3,4];
+const arr = [0,2,0,1,2,1,2,1,3,3,4].sort((a, b) => a - b);
 
 console.log(duplicates(arr));
