@@ -26,8 +26,8 @@ class Linked
       @head = node
     else
       node.next_pointer = @head
-      @head = node
     end
+    @head = node
   end
 end
 
@@ -41,6 +41,7 @@ link.append(10)
 link.append(14)
 link.prepend('c')
 link.prepend('E')
+link.prepend('a')
 
 p link
 
