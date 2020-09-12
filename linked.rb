@@ -8,7 +8,6 @@ end
 
 class Linked
   def append(data)
-
     if @head.nil?
       @head = Node.new(data)
     end
@@ -20,14 +19,28 @@ class Linked
 
     current.next_pointer = Node.new(data)
   end
+
+  def prepend(data)
+    node = Node.new(data)
+    if @head.nil?
+      @head = node
+    else
+      node.next_pointer = @head
+      @head = node
+    end
+  end
 end
 
 link = Linked.new
 
 link.append(6)
 link.append(10)
-link.append(5)
-link.append(1)
+# link.append(5)
+# link.append(1)
+# link.append(21)
+link.append(14)
+link.prepend('c')
+link.prepend('E')
 
 p link
 
