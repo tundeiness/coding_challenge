@@ -51,7 +51,7 @@ class Linked
 
     # if position is 0, we insert in the first position
     if position.zero?
-      node = Node.new(value, @head)
+      node = Node.new(value)
       @head = node
     else
       # insert at desired position if index is greater than 0
@@ -65,19 +65,19 @@ class Linked
       end
 
       #  loop to the desired position before where you wish to insert
-      position.times do
-        current = current.next_pointer
-      end
+      # position.times do
+      #   current = current.next_pointer
+      # end
 
       #  create the node you wish to insert
       new_node = Node.new(value)
-      after_current = prev.next_pointer
+      after = prev.next_pointer
 
       #  point node before current to new node
       prev.next_pointer = new_node
 
       #  point new node to the old current node
-      new_node.next_pointer = after_current
+      new_node.next_pointer = after
 
     end
     # @length += 1
@@ -92,7 +92,7 @@ link.append(6)
 # link.append(1)
 # link.append(21)
 link.append(14)
-link.append(4)
+# link.append(4)
 # link.pre('c')
 # link.pre('E')
 # link.pre('a')
