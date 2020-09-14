@@ -43,29 +43,40 @@ class Linked
   def insert(position, value)
     # @length = 0
 
+    # if list is empty, the head is the new node
     if @head.nil?
       current = Node.new(value)
       @head = current
     end
 
-
+    # if position is 0, we insert in the first position
     if position.zero?
       node = Node.new(value, @head)
       @head = node
     else
+      # insert at desired position if index is greater than 0
       current = @head
       prev = @head
       idx = position - 1
+
+      # loop to the desired position before where you wish to insert
       idx.times do
         prev = current.next_pointer
       end
 
+      #  loop to the desired position before where you wish to insert
       position.times do
         current = current.next_pointer
       end
+
+      #  create the node you wish to insert
       new_node = Node.new(value)
       after_current = prev.next_pointer
+
+      #  point node before current to new node
       prev.next_pointer = new_node
+
+      #  point new node to the old current node
       new_node.next_pointer = after_current
 
     end
