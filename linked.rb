@@ -82,6 +82,16 @@ class Linked
     end
     # @length += 1
   end
+
+  def get_index(idx)
+    current = @head
+
+    idx.times do
+      current = current.next_pointer
+    end
+
+    current.data
+  end
 end
 
 link = Linked.new
@@ -99,6 +109,8 @@ link.append(14)
 # link.pre(100)
 link.insert(3, 'y')
 link.insert(1, 'frodo')
+
+p link.get_index(4)
 
 p link
 
