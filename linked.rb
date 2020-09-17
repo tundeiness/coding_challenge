@@ -8,9 +8,10 @@ end
 
 class Linked
 
-  attr_reader :head, :length
+
   def initialize
     @head = nil
+    @length = 0
   end
 
   def append(data)
@@ -26,6 +27,14 @@ class Linked
 
     current.next_pointer = Node.new(data)
     @length += 1
+  end
+
+  def traverse
+    current = @head
+    while !current.next_pointer.nil?
+      current = current.next_pointer
+    end
+    current
   end
 
 
@@ -110,7 +119,7 @@ link.append(14)
 link.insert(3, 'y')
 link.insert(1, 'frodo')
 
-p link.get_index(4)
+ p link.traverse
 
 p link
 
