@@ -7,10 +7,9 @@ class Node
 end
 
 class Linked
-
-
   def initialize
     @head = nil
+    # @tail = nil
     @length = 0
   end
 
@@ -27,6 +26,17 @@ class Linked
 
     current.next_pointer = Node.new(data)
     @length += 1
+  end
+
+  def pop
+    return 'undefined' if @head.nil?
+    current = @head
+
+    while current.next_pointer != nil
+      prev = current
+      current = current.next_pointer
+    end
+    prev.next_pointer = nil
   end
 
   def traverse
@@ -109,17 +119,19 @@ link.append(6)
 link.append(10)
 # link.append(5)
 # link.append(1)
-# link.append(21)
+link.append(21)
 link.append(14)
+
+link.pop
 # link.append(4)
 # link.pre('c')
 # link.pre('E')
 # link.pre('a')
 # link.pre(100)
-link.insert(3, 'y')
-link.insert(1, 'frodo')
+# link.insert(3, 'y')
+# link.insert(1, 'frodo')
 
- p link.traverse
+#  p link.traverse
 
 p link
 
