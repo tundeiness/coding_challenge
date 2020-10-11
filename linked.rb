@@ -30,6 +30,7 @@ class Linked
 
   def pop
     return 'undefined' if @head.nil?
+
     current = @head
 
     while current.next_pointer != nil
