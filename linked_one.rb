@@ -15,34 +15,35 @@ end
 # p new_node
 
 class Linkedlist
-  def initialize
-    @head = nil
-    @tail = nil
-    @length = 0
-  end
+ def initialize
+   @length = 0
+   @head = nil
+   @tail = nil
+ end
 
-  def push(data)
-    new_node = Node.new(data)
-    if @head.nil?
-      @head = new_node
-      @tail = new_node
-    else
-      @tail.next = new_node
-      @tail = new_node
-      @length += 1
-    end
-  end
+ def append(data)
+   new_node = Node.new(data)
+   if @head.nil?
+     @head = new_node
+     @tail = new_node
+   else
+     @tail.next = new_node
+     @tail = new_node
+     @length += 1
+   end
+ end
 end
 
 
 new_list = Linkedlist.new
-new_list.push(5)
-new_list.push(10)
-new_list.push(11)
-new_list.push('vortex')
-new_list.push(2)
-new_list.push(10)
-new_list.push(21)
+new_list.append(5)
+new_list.append(10)
+# new_list.push(11)
+new_list.append('vortex')
+# new_list.push(2)
+# new_list.push(10)
+new_list.append(21)
+new_list.append('trials')
 
 
 p new_list
