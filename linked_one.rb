@@ -32,6 +32,18 @@ class Linkedlist
      @length += 1
    end
  end
+
+ def prepend(data)
+  new_node = Node.new(data)
+  if @head.nil?
+    @head = new_node
+    @tail = new_node
+  else 
+    new_node.next = @head
+    @head = new_node
+    @length += 1
+  end 
+ end 
 end
 
 
@@ -44,6 +56,9 @@ new_list.append('vortex')
 # new_list.push(10)
 new_list.append(21)
 new_list.append('trials')
+
+new_list.prepend('test')
+new_list.prepend('another_test')
 
 
 p new_list
