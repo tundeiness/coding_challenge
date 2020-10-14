@@ -21,11 +21,14 @@ class Linkedlist
    @tail = nil
  end
 
+ def get 
+ end 
+
  def append(data)
    new_node = Node.new(data)
    if @head.nil?
      @head = new_node
-     @tail = new_node
+     @tail = @head
    else
      @tail.next = new_node
      @tail = new_node
@@ -43,6 +46,56 @@ class Linkedlist
     @head = new_node
     @length += 1
   end 
+ end
+
+ def traverse
+  curr = @head
+  while curr
+    p curr.data
+    curr = curr.next
+  end
+ end
+
+ def pop
+   return 'undefined' if @head.nil?
+
+   curr = @head
+   while curr.next
+     prev = curr
+     curr = curr.next
+   end
+    prev.next = nil
+   @tail = prev
+   @length -= 1
+   if @length.zero?
+     @head = nil
+     @tail = nil
+   end
+ end
+
+ def shift
+  if @head.nil?
+    'empty'
+  else
+    curr = @head.next
+    @head = curr
+    @length -= 1
+  end
+ end
+
+ def insert(idx, val)
+  if idx.zero?
+    prepend(val)
+  elsif idx == @length
+    append(val)
+  elsif idx > @length
+    'out of range'
+  else
+    curr = @head 
+    while curr.next
+      prev = curr
+    end 
+  end
  end 
 end
 
@@ -57,8 +110,11 @@ new_list.append('vortex')
 new_list.append(21)
 new_list.append('trials')
 
-new_list.prepend('test')
-new_list.prepend('another_test')
+# new_list.prepend('test')
+# new_list.prepend('another_test')
+# new_list.traverse
+# new_list.pop
+new_list.shift
 
-
+# new_list.insert(3, 4)
 p new_list
