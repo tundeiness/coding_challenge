@@ -21,8 +21,18 @@ class Linkedlist
    @tail = nil
  end
 
- def get 
- end 
+ def get(idx)
+  count = 0
+  return nil if idx < 0 || idx >= @length
+
+  curr = @head
+  while curr.next
+    return curr if idx == count
+
+    curr = curr.next
+    count += 1
+  end
+ end
 
  def append(data)
    new_node = Node.new(data)
@@ -84,19 +94,22 @@ class Linkedlist
  end
 
  def insert(idx, val)
-  if idx.zero?
-    prepend(val)
-  elsif idx == @length
-    append(val)
-  elsif idx > @length
-    'out of range'
-  else
-    curr = @head 
-    while curr.next
-      prev = curr
-    end 
-  end
- end 
+        return false if idx.negative? || idx > @length
+
+        append(val) if idx == @length
+
+        prepend(val) if idx.zero?
+
+        node = get(idx - 1)
+        news = Node.new(val)
+        aft = get(idx)
+
+        prev = news
+        node.next = prev
+        prev.next = aft
+        @length += 1
+        true
+    end
 end
 
 
@@ -110,11 +123,11 @@ new_list.append('vortex')
 new_list.append(21)
 new_list.append('trials')
 
-# new_list.prepend('test')
-# new_list.prepend('another_test')
+new_list.prepend('test')
+new_list.prepend('another_test')
 # new_list.traverse
 # new_list.pop
 new_list.shift
 
-# new_list.insert(3, 4)
+new_list.insert(3, 'smirk')
 p new_list
