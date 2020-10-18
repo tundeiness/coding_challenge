@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def intervals(a, b)
   p a
   p b

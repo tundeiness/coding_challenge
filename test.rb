@@ -1,113 +1,111 @@
+# frozen_string_literal: true
+
 class Node
   attr_accessor :val, :next
 
   def initialize(val)
-    @val = val 
+    @val = val
     @next = nil
   end
 end
 
-
 class Linkedlist
-    def initialize
-        @length = 0
-        @head = nil
-        @tail = nil
+  def initialize
+    @length = 0
+    @head = nil
+    @tail = nil
+  end
+
+  def unshift
+    if @head.nil?
+      'empty list'
+    else
+      curr = @head.next
+      @head = curr
+      @length -= 1
     end
+  end
 
-    def unshift
-        if @head.nil?
-            'empty list'
-        else
-            curr = @head.next
-            @head = curr
-            @length -= 1
-        end
+  def prepend(val)
+    new_node = Node.new(val)
+    if @head.nil?
+      @head = new_node
+      @tail = @head
+    else
+      new_node.next = @head
+      @head = new_node
+      @length += 1
     end
+  end
 
-    def prepend(val)
-        new_node = Node.new(val)
-        if @head.nil?
-            @head = new_node
-            @tail = @head
-        else
-            new_node.next = @head
-            @head = new_node
-            @length += 1
-        end
+  def get(idx)
+    count = 0
+    return nil if idx.negative? || idx >= @length
+
+    curr = @head
+    while curr.next
+      return curr if idx == count
+
+      curr = curr.next
+      count += 1
     end
+  end
 
-    def get(idx)
-        count = 0
-        return nil if idx < 0 || idx >= @length
+  def remove(idx)
+    return unshift if idx.zero?
+    return 'undefined' if idx > @length
+    return pop if idx == @length
 
-        curr = @head
-        while curr.next
-          return curr if idx == count
+    prev = get(idx - 1)
+    aft = get(idx + 1)
+    prev.next = aft
+    @length -= 1
+  end
 
-          curr = curr.next
-          count += 1
-        end
+  def append(val)
+    new_node = Node.new(val)
+    if @head.nil?
+      @head = new_node
+      @tail = @head
+    else
+      @tail.next = new_node
+      @tail = new_node
+      @length += 1
     end
+  end
 
-    def remove(idx)
-
-        return unshift if idx.zero?
-        return 'undefined' if idx > @length
-        return pop if idx == @length
-
-        prev = get(idx - 1)
-        aft = get(idx + 1)
-        prev.next = aft
-        @length -= 1
-    end 
-
-
-    def append(val)
-        new_node = Node.new(val)
-        if @head.nil? 
-            @head = new_node
-            @tail = @head
-        else 
-            @tail.next = new_node
-            @tail = new_node
-            @length += 1
-        end
+  def pop
+    if @head.nil?
+      'empty list'
+    else
+      curr = @head
+      while curr.next
+        prev = curr
+        curr = curr.next
+      end
+      @tail = prev
+      @tail.next = nil
+      @length -= 1
     end
+  end
 
+  def insert(idx, val)
+    return false if idx.negative? || idx > @length
 
-    def pop
-        if @head.nil?
-            'empty list'
-        else
-            curr = @head
-            while curr.next
-                prev = curr
-                curr = curr.next
-            end
-            @tail = prev
-            @tail.next = nil
-            @length -= 1
-        end
-    end
+    append(val) if idx == @length
 
-    def insert(idx, val)
-        return false if idx.negative? || idx > @length
+    prepend(val) if idx.zero?
 
-        append(val) if idx == @length
+    node = get(idx - 1)
+    news = Node.new(val)
+    aft = get(idx)
 
-        prepend(val) if idx.zero?
-
-        node = get(idx - 1)
-        news = Node.new(val)
-        aft = get(idx)
-
-        prev = news
-        node.next = prev
-        prev.next = aft
-        @length += 1
-        true
-    end
+    prev = news
+    node.next = prev
+    prev.next = aft
+    @length += 1
+    true
+  end
 end
 
 list = Linkedlist.new

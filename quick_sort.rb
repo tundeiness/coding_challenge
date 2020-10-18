@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 def quickSort(arr)
   pivot = arr.last
   left = []
   right = []
 
   if arr.length > 1
-    for i in arr
+    arr.each do |i|
       i < pivot ? left.push(i) : right.push(i)
     end
 

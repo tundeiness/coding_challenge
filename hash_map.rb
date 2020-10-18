@@ -1,5 +1,6 @@
-class HashMap
+# frozen_string_literal: true
 
+class HashMap
   attr_accessor :hash, :arr, :len
 
   def initialize
@@ -33,15 +34,11 @@ class HashMap
     random = rand(0..@len)
     arr[random]
   end
-
 end
-
 
 test = HashMap.new
 
 test.insert('0', 2).insert('1', 3).insert('2', 4).insert('3', 5)
-
-
 
 p test.get('1')
 
@@ -49,5 +46,4 @@ p test.delete('2')
 
 p test.hash
 
-
-p test.get_random_key()
+p test.get_random_key

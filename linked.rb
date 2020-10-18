@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Node
   attr_accessor :data, :next_pointer
   def initialize(data)
@@ -20,9 +22,7 @@ class Linked
     end
 
     current = @head
-    while current.next_pointer != nil
-      current = current.next_pointer
-    end
+    current = current.next_pointer until current.next_pointer.nil?
 
     current.next_pointer = Node.new(data)
     @length += 1
@@ -33,7 +33,7 @@ class Linked
 
     current = @head
 
-    while current.next_pointer != nil
+    until current.next_pointer.nil?
       prev = current
       current = current.next_pointer
     end
@@ -42,12 +42,9 @@ class Linked
 
   def traverse
     current = @head
-    while !current.next_pointer.nil?
-      current = current.next_pointer
-    end
+    current = current.next_pointer until current.next_pointer.nil?
     current
   end
-
 
   def pre(data)
     current = Node.new(data)
@@ -59,14 +56,10 @@ class Linked
     @head = current
   end
 
-
   def insert(position, value)
-
     current = Node.new(value)
     # if list is empty, the head is the new node
-    if @head.nil?
-      @head = current
-    end
+    @head = current if @head.nil?
 
     # if position is 0, we insert in the first position
     if position.zero?
@@ -135,5 +128,3 @@ link.pop
 #  p link.traverse
 
 p link
-
-

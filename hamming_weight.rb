@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # @param {Integer} n, a positive integer
 # @return {Integer}
 def hamming_weight(n)

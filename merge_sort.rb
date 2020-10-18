@@ -1,5 +1,6 @@
-def merge(arr1, arr2)
+# frozen_string_literal: true
 
+def merge(arr1, arr2)
   if arr1.empty?
     arr2
   elsif arr2.empty?
@@ -10,8 +11,6 @@ def merge(arr1, arr2)
     [arr2[0]] + merge(arr1, arr2[1..arr2.length])
   end
 end
-
-
 
 def split_sort(arry)
   if arry.length <= 1
@@ -24,6 +23,5 @@ def split_sort(arry)
     merge(left, right)
   end
 end
-
 
 p split_sort([10, 75, 23, 12, 56, 34, 3, 5, 98, 6, 45, 198, 45, 37])
