@@ -50,6 +50,18 @@ class Linkedlist
         end
     end
 
+    def remove(idx)
+
+        return unshift if idx.zero?
+        return 'undefined' if idx > @length
+        return pop(idx) if idx == @length
+
+        prev = get(idx - 1)
+        aft = get(idx + 1)
+        prev.next = aft
+        @length -= 1
+    end 
+
 
     def append(val)
         new_node = Node.new(val)
@@ -112,8 +124,9 @@ list.append('more new end')
 
 # p list.get(2)
 
-list.insert(2, 'warri')
-list.insert(1, 'testing')
+# list.insert(2, 'warri')
+# list.insert(1, 'testing')
+list.remove(1)
 
 # list.pop
 # list.pop
