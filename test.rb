@@ -54,7 +54,7 @@ class Linkedlist
 
         return unshift if idx.zero?
         return 'undefined' if idx > @length
-        return pop(idx) if idx == @length
+        return pop if idx == @length
 
         prev = get(idx - 1)
         aft = get(idx + 1)
@@ -126,7 +126,7 @@ list.append('more new end')
 
 # list.insert(2, 'warri')
 # list.insert(1, 'testing')
-list.remove(1)
+list.remove(0)
 
 # list.pop
 # list.pop
