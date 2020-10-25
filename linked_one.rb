@@ -111,7 +111,6 @@ class Linkedlist
     true
   end
 end
-
 new_list = Linkedlist.new
 new_list.append(5)
 new_list.append(10)
