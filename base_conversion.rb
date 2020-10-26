@@ -6,4 +6,4 @@ def base_conversion(num)
   end
 end
 
-p base_conversion(7316)
+p base_conversion(31)
